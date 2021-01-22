@@ -155,6 +155,8 @@ def is_validated_morse_code(user_input):
     tmpmose = tmpinput.split(' ')
    
     for tm in tmpmose:
+        if tm == '':
+            continue
         if tm in morsecode.values():
             continue
         else:
@@ -347,13 +349,12 @@ def main():
             break
         elif is_help_command(user_input):
             print(f'{get_help_message()}')
+        elif is_validated_english_sentence(user_input):
+            print(f'{encoding_sentence(user_input)}')
+        elif is_validated_morse_code(user_input):
+            print(f'{decoding_sentence(user_input)}')
         else:
-            if is_validated_english_sentence(user_input):
-                print(f'{encoding_sentence(user_input)}')
-            elif is_validated_morse_code(user_input):
-                print(f'{decoding_sentence(user_input)}')
-            else:
-                print('Wrong Input')
+            print('Wrong Input')
         
     # ==================================
     print("Good Bye")
